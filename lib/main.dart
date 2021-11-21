@@ -50,6 +50,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void navigateLogin() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    int? isLogin = pref.getInt("is_login");
+    if(isLogin == 1) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Pertemuan1(title: "Latian Flutter Progmob",)),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+      navigateLogin();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setInt("is_login", 1);
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => Pertemuan1(title: "zaza push",)),

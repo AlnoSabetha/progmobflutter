@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_progmob/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Pertemuan1 extends StatefulWidget {
   const Pertemuan1({Key? key, required this.title}) : super(key: key);
@@ -36,8 +37,8 @@ class _Pertemuan1State extends State<Pertemuan1> {
             Padding(padding: EdgeInsets.all(16.5)),
             TextFormField(
               decoration: new InputDecoration(
-                labelText: "input disini :",
-                hintText: "ini merupakan percobaan",
+                hintText: "contoh : Alno Sabetha",
+                labelText: "Input Here",
                 border: OutlineInputBorder(
                   borderRadius: new BorderRadius.circular(5),
                 )
@@ -50,8 +51,13 @@ class _Pertemuan1State extends State<Pertemuan1> {
                 "Logout",
                 style: TextStyle(color: Colors.white),
               ),
-              onPressed: () {
-                Navigator.pop(context);
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                await prefs.setInt("is_login", 0);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage(title: "Ini Halaman Login",)),
+                );
               }
             )
           ],

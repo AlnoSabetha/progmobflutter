@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_progmob/cardview.dart';
+import 'package:tugas_progmob/dashboard.dart';
 import 'package:tugas_progmob/pertemuan1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const Cardview(title: 'Halaman Cardview'),
     );
   }
 }
